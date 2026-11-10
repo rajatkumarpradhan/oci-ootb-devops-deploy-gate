@@ -1,0 +1,9 @@
+{
+  "stages": [
+    {"name": "build", "type": "custom"},
+    {"name": "deploy-staging", "type": "deploy", "environment": "staging", "depends_on": ["build"]},
+    {"name": "approval-prod", "type": "approval", "depends_on": ["deploy-staging"], "approver_groups": ["release-managers"]},
+    {"name": "deploy-prod", "type": "deploy", "environment": "production", "depends_on": ["approval-prod"]},
+    {"name": "rollback-prod", "type": "rollback", "depends_on": ["deploy-prod"]}
+  ]
+}
