@@ -1,0 +1,9 @@
+{
+  "stages": [
+    {"name": "build", "type": "custom"},
+    {"name": "deploy-staging", "type": "deploy", "environment": "staging", "depends_on": ["build"]},
+    {"name": "approval-prod", "type": "approval", "depends_on": ["deploy-staging"], "approver_groups": []},
+    {"name": "deploy-prod", "type": "deploy", "environment": "production", "depends_on": ["deploy-staging"]},
+    {"name": "notify", "type": "custom", "depends_on": ["deploy-prod", "smoke-tests"]}
+  ]
+}
