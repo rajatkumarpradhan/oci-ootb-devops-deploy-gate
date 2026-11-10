@@ -1,0 +1,2 @@
+compartment_ocid                 = "ocid1.compartment.oc1..example...replace-me"
+project_notification_topic_ocid  = "ocid1.onstopic.oc1..example...replace-me"
